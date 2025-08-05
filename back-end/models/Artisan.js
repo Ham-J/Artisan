@@ -9,6 +9,10 @@ const Artisan = sequelize.define("Artisan", {
   note: {
     type: DataTypes.DECIMAL(2, 1),
     defaultValue: 0,
+    validate: {
+        min: 0,
+        max: 5
+    }
   },
   ville: {
     type: DataTypes.STRING,
@@ -27,6 +31,9 @@ const Artisan = sequelize.define("Artisan", {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
   }
-});
+  },{
+    timestamps : false
+  }
+);
 
 module.exports = Artisan;

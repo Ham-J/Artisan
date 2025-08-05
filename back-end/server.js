@@ -1,8 +1,8 @@
 const sequelize = require("./config/db");   
 const express = require("express");
 require("dotenv").config();
+const app = require("./app"); 
 
-const app = express();
 const PORT = process.env.PORT || 5000;
 
 sequelize.authenticate()
