@@ -6,6 +6,8 @@ const Categorie = sequelize.define("Categorie", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+}, {
+  timestamps: false
 });
 
 module.exports = Categorie;

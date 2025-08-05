@@ -6,6 +6,8 @@ const Specialite = sequelize.define("Specialite", {
     type: DataTypes.STRING,
     allowNull: false,
   }
+},{
+  timestamps: false
 });
 
 module.exports = Specialite;
