@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import logo from '../assets/img/Logo.png';
 
 
-export default function Navbar({ onCategorieClick }) {
+export default function Navbar() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -24,14 +24,10 @@ export default function Navbar({ onCategorieClick }) {
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           {categories.map((cat) => (
             <li className="nav-item" key={cat.id}>
-              <button
-                className="btn nav-link"
-                onClick={() => onCategorieClick(cat.nom)}
-              >
-                {cat.nom}
-              </button>
-            </li>
+              <Link to={`/artisanscategorie?categorie=${encodeURIComponent(cat.nom)}`} className="nav-link">{cat.nom}</Link>
+            </li>      
           ))}
+      
         </ul>
 
         <div className="input-group w-auto">
@@ -42,6 +38,6 @@ export default function Navbar({ onCategorieClick }) {
         </div>
 
       </div>
-    </nav>
+  </nav>
   );
 }

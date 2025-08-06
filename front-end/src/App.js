@@ -4,7 +4,7 @@ import NotFound from "./pages/NotFound";
 import Navbar from "./components/nav";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './assets/styles/main.scss';
-
+import Artisans from "./pages/Artisans";
 function App() {
   return (
     <BrowserRouter>
@@ -21,7 +21,7 @@ function AppWithNavbar() {
     console.log("Catégorie sélectionnée :", cat);
   };
 
-  const validPaths = ["/", "/artisans", "/categories"];
+  const validPaths = ["/", "/artisans", "/artisanscategorie"];
   
   const shouldShowNavbar =
     validPaths.some((validPath) => path === validPath || path.startsWith("/artisan/"));
@@ -31,6 +31,7 @@ function AppWithNavbar() {
       {shouldShowNavbar && <Navbar onCategorieClick={handleCategorieClick} />}
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/artisanscategorie" element={<Artisans />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

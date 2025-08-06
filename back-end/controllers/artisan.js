@@ -1,15 +1,24 @@
 const artisanService = require("../services/artisan");
 
+
 exports.getAllArtisans = async (req, res) => {
   try {
     const artisans = await artisanService.getAllArtisans();
     res.json(artisans);
   } catch (error) {
-    console.error( error);
     res.status(500).json({ message: "Erreur serveur" });
   }
 };
 
+exports.getArtisansByCategorie = async (req, res) => {
+  try {
+    const { nom } = req.query;
+    const artisans = await artisanService.getArtisansByCategorie(nom);
+    res.json(artisans);
+  } catch (error) {
+    res.status(500).json({ message: "Erreur serveur" });
+  }
+};
 
 exports.getTopArtisans = async (req, res) => {
   try {
