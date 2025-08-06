@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Footer from "../components/footer";
+import images from '../assets/img/images.jpg';
 
 export default function FicheArtisan() {
   const { id } = useParams();
@@ -24,13 +25,14 @@ export default function FicheArtisan() {
       <div className="row gx-5">
         
         <div className="col-md-6">
-            <p><strong>Nom de l’artisan :</strong> {artisan.nom}</p>
-            <p><strong>Note :</strong> {artisan.note} / 5</p>
-            <p><strong>Sa spécialité :</strong> {artisan.Specialite?.nom}</p>
-            <p><strong>Localisation :</strong> {artisan.ville}</p>
-            <hr className="red"/>
-            <p className="mt-4">À propos</p>
-            <p>{artisan.a_propos || "Cet artisan n'a pas encore rédigé de description."}</p>
+          <img src={images} alt="Logo" className="mb-2"/>
+          <p><strong>Nom de l’artisan :</strong> {artisan.nom}</p>
+          <p><strong>Note :</strong> {artisan.note} / 5</p>
+          <p><strong>Sa spécialité :</strong> {artisan.Specialite?.nom}</p>
+          <p><strong>Localisation :</strong> {artisan.ville}</p>
+          <hr className="red"/>
+          <p className="mt-4">À propos</p>
+          <p>{artisan.a_propos || "Cet artisan n'a pas encore rédigé de description."}</p>
 
           {artisan.site_web && (
             <p>
