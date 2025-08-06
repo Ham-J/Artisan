@@ -1,11 +1,31 @@
-const { Artisan, Specialite } = require("../models");
+const { Artisan, Specialite, Categorie} = require("../models");
 const { Op } = require("sequelize");
+
 
 exports.getAllArtisans = async () => {
   return await Artisan.findAll({
     include: {
       model: Specialite,
       attributes: ["nom"]
+    }
+  });
+};
+
+exports.getArtisansByCategorie = async (nomCategorie) => {
+  console.log(" Nom reçu :", nomCategorie);
+  return await Artisan.findAll({
+    include: {
+      model: Specialite,
+      required: true,
+      include: {
+        model: Categorie,
+        required: true,
+        where: {
+          nom: {
+            [Op.like]: `%${nomCategorie}%`
+          }
+        }
+      }
     }
   });
 };
