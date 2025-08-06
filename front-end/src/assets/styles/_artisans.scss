@@ -1,5 +1,3 @@
-
-
 .container {
   padding: 1.25rem 0.625rem;
   max-width: 1200px;
@@ -64,7 +62,8 @@
     
 
     &:hover {
-      box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1);
+      
+      box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1) !important;
     }
 
     
@@ -75,5 +74,3 @@
     }
   }
 }
-
-

@@ -2,10 +2,22 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import logo from '../assets/img/Logo.png';
-
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
+  const [search, setSearch] = useState("");
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (search.trim()) {
+      navigate(`/recherche?query=${encodeURIComponent(search)}`);
+      setSearch(""); 
+    }
+  };
+
+
 
   useEffect(() => {
     axios.get("http://localhost:5000/categories").then((res) => {
@@ -30,13 +42,13 @@ export default function Navbar() {
       
         </ul>
 
-        <div className="input-group w-auto">
-          <input type="search" className="form-control" placeholder="Rechercher..." />
+        <form className="d-flex" onSubmit={handleSearch}>
+          <input type="search" className="form-control" placeholder="Rechercher..." value={search} 
+          onChange={(e) => setSearch(e.target.value)}/>
           <button className="btn btn-outline-primary" type="submit">
             <i className="bi bi-search"></i>
           </button>
-        </div>
-
+        </form>
       </div>
   </nav>
   );
