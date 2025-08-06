@@ -48,9 +48,9 @@ export default function Artisans() {
     </div>
     )}
   </section>
-   <div className="footer-wrapper">
-      <Footer />
-    </div>
+  <div className="footer-wrapper">
+    <Footer />
+  </div>
 </>
   );
 }

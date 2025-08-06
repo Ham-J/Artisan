@@ -7,6 +7,7 @@ import './assets/styles/main.scss';
 import Artisans from "./pages/Artisans";
 import Construction from "./pages/Construction";
 import Recherche from "./pages/Recherche";
+import FicheArtisan from "./pages/FicheArtisan";
 function App() {
   return (
     <BrowserRouter>
@@ -34,7 +35,8 @@ function AppWithNavbar() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/artisanscategorie" element={<Artisans />} />
-        <Route path="/recherche" element={<Recherche />} /> 
+        <Route path="/recherche" element={<Recherche />} />     
+        <Route path="/artisan/:id" element={<FicheArtisan />} />
         <Route path="/mentions" element={< Construction/>} />
         <Route path="/donnees" element={< Construction />} />
         <Route path="/accessibilites" element={< Construction />} />

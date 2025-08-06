@@ -1,0 +1,75 @@
+.fiche-artisan {
+   hr {
+    width: 40px;
+    height: 4px;
+    border: none;
+    margin: 1rem 0;
+  }
+
+  hr.green {
+    background-color: #82b864;
+    opacity: 1;
+    margin-bottom: 1.8rem;
+  }
+  hr.red {
+    background-color: #cd2c2e;
+    opacity: 1;
+  }
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #00497c;
+  }
+  h2{
+    font-size: 1.2rem;
+    color: #00497c;
+    font-weight: 550;
+  }
+  .mt-4{
+    color: #00497c;
+    font-weight: 550;
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+  
+
+  .contact-form {
+    background-color: #fff;
+    padding: 1rem 0;
+    width: 400px;  
+     
+    input, textarea {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      
+    }
+
+    button {
+      background-color: #00497c;
+      color: white;
+      border: none;
+       
+      &:hover {
+        background-color: #003b63;
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    .row {
+      flex-direction: column;
+    }
+
+    .col-md-6 {
+      width: 100%;
+      margin-bottom: 2rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
+}
