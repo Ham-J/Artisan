@@ -5,6 +5,7 @@ import Navbar from "./components/nav";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './assets/styles/main.scss';
 import Artisans from "./pages/Artisans";
+import Construction from "./pages/Construction";
 function App() {
   return (
     <BrowserRouter>
@@ -32,6 +33,10 @@ function AppWithNavbar() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/artisanscategorie" element={<Artisans />} />
+        <Route path="/mentions" element={< Construction/>} />
+        <Route path="/donnees" element={< Construction />} />
+        <Route path="/accessibilites" element={< Construction />} />
+        <Route path="/cookies" element={< Construction />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
