@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import axios from "axios";
-
+import Footer from "../components/footer";
 
 
 export default function Artisans() {
@@ -21,32 +21,36 @@ export default function Artisans() {
   }, [nomCategorie]);
 
   return (
-    <section className="container">
-        <hr className="green" />
-        <h1> Nos Artisans en {nomCategorie}</h1>
+    <>
+    <section className="container mb-5">
+      <hr className="green" />
+      <h1> Nos Artisans en {nomCategorie}</h1>
 
-  {artisans.length === 0 ? (
-    <p className="text-muted text-center mt-4">Aucun artisan trouvé.</p>
-  ) : (
-    <div className="artisans-grid container">
-  {artisans.map((artisan) => (
-    <div className="card-wrapper" key={artisan.id}>
-      <Link to={`/artisan/${artisan.id}`} className="card-link">
-        <div className="card">
-          <h5 className="card-title">{artisan.nom}</h5>
-          <p className="card-text">{artisan.Specialite?.nom}</p>
-          <p className="card-text">Ville : {artisan.ville}</p>
-          <p className="card-text">Note : {artisan.note} / 5</p>
-        </div>
-      </Link>
+      {artisans.length === 0 ? (
+        <p className="text-muted text-center mt-4">Aucun artisan trouvé.</p>
+      ) : (
+        <div className="artisans-grid">
+        {artisans.map((artisan) => (
+          <div className="card-wrapper" key={artisan.id}>
+            <Link to={`/artisan/${artisan.id}`} className="card-link">
+              <div className="card h-100 shadow-sm">
+              <div className="card-body">
+                <p className="card-text fw-bold">{artisan.nom}</p>
+                <p className="card-text">
+                {artisan.Specialite?.nom}</p>
+                <p className="card-text">Ville : {artisan.ville}</p> 
+              <p className="card-text">Note : {artisan.note} / 5</p>
+            </div>
+          </div>
+        </Link>
+      </div>
+     ))}
     </div>
-  ))}
-</div>
-
-
-    
-  )}
-</section>
-
+    )}
+  </section>
+   <div className="footer-wrapper">
+      <Footer />
+    </div>
+</>
   );
 }
