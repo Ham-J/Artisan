@@ -1,23 +1,39 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {BrowserRouter,Routes,Route,useLocation} from "react-router-dom";
 import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 import Navbar from "./components/nav";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './assets/styles/main.scss';
 
 function App() {
-  const handleCategorieClick = (cat) => {
-    console.log("Catégorie sélectionnée :", cat);
-
-  };
-
   return (
     <BrowserRouter>
-      <Navbar onCategorieClick={handleCategorieClick} />
+      <AppWithNavbar />
+    </BrowserRouter>
+  );
+}
+
+function AppWithNavbar() {
+  const location = useLocation();
+  const path = location.pathname;
+
+  const handleCategorieClick = (cat) => {
+    console.log("Catégorie sélectionnée :", cat);
+  };
+
+  const validPaths = ["/", "/artisans", "/categories"];
+  
+  const shouldShowNavbar =
+    validPaths.some((validPath) => path === validPath || path.startsWith("/artisan/"));
+
+  return (
+    <>
+      {shouldShowNavbar && <Navbar onCategorieClick={handleCategorieClick} />}
       <Routes>
         <Route path="/" element={<Home />} />
-        
+        <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
 }
 
