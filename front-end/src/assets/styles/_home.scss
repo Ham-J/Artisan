@@ -1,0 +1,80 @@
+*{
+  background-color: white;
+}
+.home-container {
+  padding: 1.25rem 0.625rem;
+  max-width: 1200px;  
+  margin: 0 auto;     
+  width: 100%;  
+  color: #384050;
+  hr {
+    width: 40px;
+    height: 4px;
+    border: none;
+    margin: 1rem 0;
+  }
+
+  hr.red {
+    background-color: #cd2c2e;
+    opacity: 1;
+  }
+
+  hr.green {
+    background-color: #82b864;
+    opacity: 1;
+  }
+
+
+  .intro {
+    
+    h1 {
+      font-size: 1.8rem;
+      color: #00497c;
+      margin-bottom: 1rem;
+      position: relative;
+      font-weight: 550;
+    }
+
+    ol {
+      padding-left: 1.5rem;
+
+      li {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+    }
+  }
+
+  .top-artisans {
+    padding: 1.25rem 0.625rem;;
+    h2 {
+      font-size: 1.6rem;
+      color: #00497c;
+      margin-bottom: 2rem;
+      position: relative;
+      font-weight: 550;
+    }
+    
+    .cards-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 1.5rem;
+    }
+
+    .card-link{
+      text-decoration: none;
+    }
+
+    .card {
+      height: 210px;
+      width: 250px;
+
+      &:hover {
+        box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1);
+      }
+    }
+
+  }
+}
