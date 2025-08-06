@@ -14,8 +14,8 @@ export default function Navbar({ onCategorieClick }) {
   }, []);
  
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light px-3">
-      <Link className="navbar-brand pt-0 pb-0" to="/">  <img src={logo} alt="Logo" style={{ height: "50px" }}  /></Link>
+    <nav className="navbar navbar-expand-lg  px-3">
+      <Link className="navbar-brand pt-0 pb-0" to="/">  <img src={logo} alt="Logo" /></Link>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navCategories">
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -34,10 +34,13 @@ export default function Navbar({ onCategorieClick }) {
           ))}
         </ul>
 
-        <form className="d-flex">
-          <input className="form-control " type="search" placeholder="Rechercher" />
-          <button className="btn btn-outline-primary" type="submit" style={{width:"100px"}}><i className="bi bi-search"></i></button>
-        </form>
+        <div className="input-group w-auto">
+          <input type="search" className="form-control" placeholder="Rechercher..." />
+          <button className="btn btn-outline-primary" type="submit">
+            <i className="bi bi-search"></i>
+          </button>
+        </div>
+
       </div>
     </nav>
   );
