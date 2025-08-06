@@ -6,6 +6,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import './assets/styles/main.scss';
 import Artisans from "./pages/Artisans";
 import Construction from "./pages/Construction";
+import Recherche from "./pages/Recherche";
 function App() {
   return (
     <BrowserRouter>
@@ -22,7 +23,7 @@ function AppWithNavbar() {
     console.log("Catégorie sélectionnée :", cat);
   };
 
-  const validPaths = ["/", "/artisans", "/artisanscategorie"];
+  const validPaths = ["/", "/artisans", "/artisanscategorie","/recherche"];
   
   const shouldShowNavbar =
     validPaths.some((validPath) => path === validPath || path.startsWith("/artisan/"));
@@ -33,6 +34,7 @@ function AppWithNavbar() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/artisanscategorie" element={<Artisans />} />
+        <Route path="/recherche" element={<Recherche />} /> 
         <Route path="/mentions" element={< Construction/>} />
         <Route path="/donnees" element={< Construction />} />
         <Route path="/accessibilites" element={< Construction />} />
