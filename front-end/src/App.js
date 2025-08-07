@@ -10,7 +10,7 @@ import Recherche from "./pages/Recherche";
 import FicheArtisan from "./pages/FicheArtisan";
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/artisan">
       <AppWithNavbar />
     </BrowserRouter>
   );
