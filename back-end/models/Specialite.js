@@ -5,11 +5,14 @@ const Specialite = sequelize.define("Specialite", {
   nom: {
     type: DataTypes.STRING,
     allowNull: false,
+  },
+  categorie_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
   }
 }, {
-  timestamps: false,
-  tableName: "specialite",      
-  freezeTableName: true         
+  tableName: 'specialites', 
+  timestamps: true
 });
 
 module.exports = Specialite;
