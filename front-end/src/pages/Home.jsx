@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Footer from "../components/footer";
-
+import { Helmet } from "react-helmet";
 export default function Home() {
   const [topArtisans, setTopArtisans] = useState([]);
 
@@ -15,6 +15,10 @@ export default function Home() {
 
   return (
     <>
+     <Helmet>
+        <title>Accueil - Plateforme Artisan</title>
+        <meta name="description" content="Trouvez un artisan local selon vos besoins. Recherche par catégorie, localisation, et note." />
+      </Helmet>
     <div className="home-container container">
       <section className="intro">
         <hr className="red" />

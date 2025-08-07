@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import axios from "axios";
 import Footer from "../components/footer";
+import { Helmet } from "react-helmet";
 
 export default function Recherche() {
   const location = useLocation();
@@ -21,8 +22,12 @@ export default function Recherche() {
 
   return (
     <>
+    <Helmet>
+      <title>Recherche artisan</title>
+      <meta name="description" content="Liste des artisans grâce à la recherche de l'utilisateur" />
+    </Helmet>
     <div className="container py-4">
-        <hr className="green"/>
+      <hr className="green"/>
       <h1>Résultats pour : "{searchTerm}"</h1>
         <div className="artisans-grid">
             {results.length > 0 ? (

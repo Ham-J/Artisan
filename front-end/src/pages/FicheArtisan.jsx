@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Footer from "../components/footer";
 import images from '../assets/img/images.jpg';
-
+import { Helmet } from "react-helmet";
 export default function FicheArtisan() {
   const { id } = useParams();
   const [artisan, setArtisan] = useState(null);
@@ -19,6 +19,10 @@ export default function FicheArtisan() {
 
   return (
     <>
+    <Helmet>
+      <title>Fiche artisan</title>
+      <meta name="description" content="Fiche de l'artisan détaillée avec formulaire de contact" />
+    </Helmet>
     <div className="container fiche-artisan py-5">
       <h1 className="text-center mb-5 ">Fiche artisan</h1>
 

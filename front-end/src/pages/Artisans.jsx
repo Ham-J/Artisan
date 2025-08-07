@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import axios from "axios";
 import Footer from "../components/footer";
-
+import { Helmet } from "react-helmet";
 
 export default function Artisans() {
   const location = useLocation();
@@ -22,6 +22,10 @@ export default function Artisans() {
 
   return (
     <>
+    <Helmet>
+      <title>Liste des artisans-catégorie</title>
+      <meta name="description" content="Liste des artisans adaptée à la catégorie, entre batiment, alimentation, services et fabrication" />
+    </Helmet>
     <section className="container mb-5">
       <hr className="green" />
       <h1> Nos Artisans en {nomCategorie}</h1>
