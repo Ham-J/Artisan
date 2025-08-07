@@ -23,20 +23,16 @@ exports.getAllArtisans = async () => {
 // GET BY CATEGORIE
 exports.getArtisansByCategorie = async (nomCategorie) => {
   try {
-    console.log("getArtisansByCategorie appelé avec :", nomCategorie);
-
-    if (!nomCategorie || nomCategorie.trim() === "") {
-      return []; // ou tu peux throw une erreur si nom est requis
-    }
-
     return await Artisan.findAll({
       include: {
         model: Specialite,
+        required: true,
         include: {
           model: Categorie,
           where: { nom: nomCategorie },
-        },
-      },
+          required: true
+        }
+      }
     });
   } catch (error) {
     console.error("Erreur dans getArtisansByCategorie :", error);

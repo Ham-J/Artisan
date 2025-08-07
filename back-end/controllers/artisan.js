@@ -11,23 +11,25 @@ exports.getAllArtisans = async (req, res) => {
   }
 };
 
-// GET artisans by category name
+// GET artisans 
 exports.getArtisansByCategorie = async (req, res) => {
   try {
     const { nom } = req.query;
 
-    if (!nom || nom.trim() === "") {
-      return res.status(400).json({ message: "Le nom de catégorie est requis" });
+    if (!nom) {
+      return res.status(400).json({ message: "Le nom de la catégorie est requis dans la query" });
     }
 
-    const artisans = await artisanService.getArtisansByCategorie(nom.trim());
+    console.log("Nom de catégorie reçu :", nom);
+
+    const artisans = await artisanService.getArtisansByCategorie(nom);
+
     res.json(artisans);
   } catch (error) {
-    console.error("Erreur dans getArtisansByCategorie :", error); 
-    res.status(500).json({ message: "Erreur serveur" });
+    console.error("Erreur dans getArtisansByCategorie :", error);
+    res.status(500).json({ message: "Erreur serveur lors de la récupération des artisans par catégorie" });
   }
 };
-
 
 // GET top artisans
 exports.getTopArtisans = async (req, res) => {
