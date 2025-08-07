@@ -11,6 +11,8 @@ const Artisan = sequelize.define("artisan", {
   site_web: DataTypes.STRING,
   top: DataTypes.BOOLEAN,
   specialite_id: DataTypes.INTEGER,
+}, {
+  timestamps: false,        
 });
 
 module.exports = Artisan;
