@@ -26,8 +26,10 @@ exports.getArtisansByCategorie = async (nomCategorie) => {
     return await Artisan.findAll({
       include: {
         model: Specialite,
+        required: true,
         include: {
           model: Categorie,
+          required: true,
           where: where(
             fn("LOWER", col("Specialite->Categorie.nom")),
             nomCategorie.toLowerCase()
