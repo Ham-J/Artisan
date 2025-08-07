@@ -28,7 +28,10 @@ exports.getArtisansByCategorie = async (nomCategorie) => {
         model: Specialite,
         include: {
           model: Categorie,
-          where: where(fn("LOWER", col("nom")), nomCategorie.toLowerCase()),
+          where: where(
+            fn("LOWER", col("Specialite->Categorie.nom")),
+            nomCategorie.toLowerCase()
+          ),
         },
       },
     });
@@ -37,6 +40,7 @@ exports.getArtisansByCategorie = async (nomCategorie) => {
     throw error;
   }
 };
+
 
 // GET TOP 3
 exports.getTopArtisans = async () => {
