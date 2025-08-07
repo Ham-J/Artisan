@@ -22,15 +22,24 @@ exports.getAllArtisans = async () => {
 
 // GET grâce à la catégorie
 exports.getArtisansByCategorie = async (nomCategorie) => {
-  return Artisan.findAll({
-    include: {
-      model: Specialite,
+  try {
+    return await Artisan.findAll({
       include: {
-        model: Categorie,
-        where: { nom: nomCategorie } 
-      }
-    }
-  });
+        model: Specialite,
+        include: {
+          model: Categorie,
+          where: {
+            nom: {
+              [Op.iLike]: nomCategorie, 
+            },
+          },
+        },
+      },
+    });
+  } catch (error) {
+    console.error("Erreur dans getArtisansByCategorie :", error);
+    throw error;
+  }
 };
 
 // GET TOP 3

@@ -15,19 +15,18 @@ exports.getAllArtisans = async (req, res) => {
 exports.getArtisansByCategorie = async (req, res) => {
   try {
     const { nom } = req.query;
-
-    if (!nom) {
-      return res.status(400).json({ message: "Le nom de la catégorie est requis dans la query" });
-    }
-
-    console.log("Nom de catégorie reçu :", nom);
+    console.log("Catégorie reçue :", nom);
 
     const artisans = await artisanService.getArtisansByCategorie(nom);
+
+    if (!artisans || artisans.length === 0) {
+      return res.status(404).json({ message: "Aucun artisan trouvé pour cette catégorie" });
+    }
 
     res.json(artisans);
   } catch (error) {
     console.error("Erreur dans getArtisansByCategorie :", error);
-    res.status(500).json({ message: "Erreur serveur lors de la récupération des artisans par catégorie" });
+    res.status(500).json({ message: "Erreur serveur" });
   }
 };
 
