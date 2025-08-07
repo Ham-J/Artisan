@@ -1,15 +1,11 @@
 const sequelize = require("./config/db");   
-const express = require("express");
 require("dotenv").config();
 const app = require("./app"); 
 
-const PORT = process.env.PORT || 5000;
 
 sequelize.authenticate()
-  .then(() => {
-    console.log("MySQL connected");
-    app.listen(PORT, () => {
-      console.log(` Serveur lancé sur http://localhost:${PORT}`);
-    });
-  })
-  .catch((err) => console.error("Connexion error :", err));
+  .then(() => console.log(' Connecté à la base MySQL Railway'))
+  .catch(err => console.error(' Erreur de connexion à la DB :', err));
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Serveur en écoute sur le port ${PORT}`));
