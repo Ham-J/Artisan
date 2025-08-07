@@ -13,21 +13,21 @@ exports.getAllArtisans = async (req, res) => {
 
 // GET artisans by category name
 exports.getArtisansByCategorie = async (req, res) => {
-  const { nom } = req.query;
-
-  if (!nom) {
-    return res.status(400).json({ message: "Le paramètre 'nom' de la catégorie est requis" });
-  }
-
   try {
-    console.log("🔎 Nom reçu depuis la requête :", nom);
-    const artisans = await artisanService.getArtisansByCategorie(nom);
-    res.status(200).json(artisans);
+    const { nom } = req.query;
+
+    if (!nom || nom.trim() === "") {
+      return res.status(400).json({ message: "Le nom de catégorie est requis" });
+    }
+
+    const artisans = await artisanService.getArtisansByCategorie(nom.trim());
+    res.json(artisans);
   } catch (error) {
-    console.error(" Erreur dans getArtisansByCategorie :", error.message);
-    res.status(500).json({ message: "Erreur serveur lors de la récupération des artisans par catégorie" });
+    console.error("Erreur dans getArtisansByCategorie :", error); 
+    res.status(500).json({ message: "Erreur serveur" });
   }
 };
+
 
 // GET top artisans
 exports.getTopArtisans = async (req, res) => {
