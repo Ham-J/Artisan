@@ -1,35 +1,17 @@
-const Artisan = sequelize.define("Artisan", {
-  nom: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  note: {
-    type: DataTypes.DECIMAL(2, 1),
-    defaultValue: 0,
-    validate: {
-        min: 0,
-        max: 5
-    }
-  },
-  ville: {
-    type: DataTypes.STRING,
-  },
-  a_propos: {
-    type: DataTypes.TEXT,
-  },
-  email: {
-    type: DataTypes.STRING,
-  },
-  site_web: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
-  top: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-  }
-}, {
-  timestamps: false,
-  tableName: "artisan",       
-  freezeTableName: true       
+const { DataTypes } = require('sequelize');
+const sequelize = require('../config/db'); 
+
+const Artisan = sequelize.define("artisan", {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  nom: DataTypes.STRING,
+  note: DataTypes.FLOAT,
+  ville: DataTypes.STRING,
+  a_propos: DataTypes.TEXT,
+  email: DataTypes.STRING,
+  site_web: DataTypes.STRING,
+  top: DataTypes.BOOLEAN,
+  specialite_id: DataTypes.INTEGER,
 });
+
+module.exports = Artisan;
+
