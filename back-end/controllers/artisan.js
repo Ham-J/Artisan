@@ -1,11 +1,11 @@
 const artisanService = require("../services/artisan");
 
-
 exports.getAllArtisans = async (req, res) => {
   try {
     const artisans = await artisanService.getAllArtisans();
     res.json(artisans);
   } catch (error) {
+    console.error("Erreur dans getAllArtisans :", error);
     res.status(500).json({ message: "Erreur serveur" });
   }
 };
@@ -16,6 +16,7 @@ exports.getArtisansByCategorie = async (req, res) => {
     const artisans = await artisanService.getArtisansByCategorie(nom);
     res.json(artisans);
   } catch (error) {
+    console.error("Erreur dans getArtisansByCategorie :", error);
     res.status(500).json({ message: "Erreur serveur" });
   }
 };
@@ -25,14 +26,13 @@ exports.getTopArtisans = async (req, res) => {
     const artisans = await artisanService.getTopArtisans();
     res.json(artisans);
   } catch (error) {
-    console.error(error);
+    console.error("Erreur dans getTopArtisans :", error);
     res.status(500).json({ message: "Erreur serveur" });
   }
 };
 
 exports.searchArtisans = async (req, res) => {
   let { search } = req.query;
-
 
   search = search?.trim();
 
@@ -44,11 +44,10 @@ exports.searchArtisans = async (req, res) => {
     const artisans = await artisanService.searchArtisansByName(search);
     res.json(artisans);
   } catch (error) {
-    console.error(error);
+    console.error("Erreur dans searchArtisans :", error);
     res.status(500).json({ message: "Erreur serveur" });
   }
 };
-
 
 exports.getArtisanById = async (req, res) => {
   try {
@@ -60,7 +59,7 @@ exports.getArtisanById = async (req, res) => {
 
     res.json(artisan);
   } catch (error) {
-    console.error( error);
+    console.error("Erreur dans getArtisanById :", error);
     res.status(500).json({ message: "Erreur serveur" });
   }
 };
