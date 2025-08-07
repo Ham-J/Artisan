@@ -4,7 +4,10 @@ const artisanRoutes = require('./routes/Artisans');
 const categorieRoutes = require('./routes/Categorie');
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://ham-j.github.io'
+}));
+
 app.use(express.json());
 
 require("./models"); 
