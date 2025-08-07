@@ -10,7 +10,7 @@ export default function FicheArtisan() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/artisans/${id}`)
+      .get(`https://artisan-backend-wcsv.onrender.com/artisans/${id}`)
       .then(res => setArtisan(res.data))
       .catch(err => console.error("Erreur fiche artisan :", err));
   }, [id]);

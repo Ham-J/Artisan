@@ -20,7 +20,7 @@ export default function Navbar() {
 
 
   useEffect(() => {
-    axios.get("http://localhost:5000/categories").then((res) => {
+    axios.get("https://artisan-backend-wcsv.onrender.com/categories").then((res) => {
       setCategories(res.data);
     });
   }, []);

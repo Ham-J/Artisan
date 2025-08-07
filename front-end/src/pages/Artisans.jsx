@@ -14,7 +14,7 @@ export default function Artisans() {
   useEffect(() => {
     if (nomCategorie) {
       axios
-        .get(`http://localhost:5000/artisans/byCategorie?nom=${nomCategorie}`)
+        .get(`https://artisan-backend-wcsv.onrender.com/artisans/byCategorie?nom=${nomCategorie}`)
         .then((res) => setArtisans(res.data))
         .catch((err) => console.error("Erreur catégorie :", err));
     }

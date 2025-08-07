@@ -14,7 +14,7 @@ export default function Recherche() {
   useEffect(() => {
     if (searchTerm) {
       axios
-        .get(`http://localhost:5000/artisans/search?search=${searchTerm}`)
+        .get(`https://artisan-backend-wcsv.onrender.com/artisans/search?search=${searchTerm}`)
         .then((res) => setResults(res.data))
         .catch((err) => console.error("Erreur recherche :", err));
     }

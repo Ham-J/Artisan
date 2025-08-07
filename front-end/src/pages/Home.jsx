@@ -8,7 +8,7 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/artisans/top")
+      .get("https://artisan-backend-wcsv.onrender.com/artisans/top")
       .then((res) => setTopArtisans(res.data))
       .catch((err) => console.error("Erreur top artisans :", err));
   }, []);
