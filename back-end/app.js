@@ -8,7 +8,9 @@ app.use(cors());
 app.use(express.json());
 
 require("./models"); 
-
+app.get("/", (req, res) => {
+  res.json({ message: "Bienvenue sur l'API Artisan 🛠️" });
+});
 app.use("/artisans", artisanRoutes);
 app.use('/categories',categorieRoutes);
 
