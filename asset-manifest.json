@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Artisan/static/css/main.30058f56.css",
-    "main.js": "/Artisan/static/js/main.bcf36d08.js",
+    "main.js": "/Artisan/static/js/main.d0675e4b.js",
     "static/media/bootstrap-icons.woff?": "/Artisan/static/media/bootstrap-icons.1295669cd4e305c97f2c.woff",
     "static/media/bootstrap-icons.woff2?": "/Artisan/static/media/bootstrap-icons.92ea18a81d737146ff04.woff2",
     "static/media/Logo.png": "/Artisan/static/media/Logo.04bb31bf1acc17621270.png",
@@ -10,10 +10,10 @@
     "static/media/Graphik-Regular.woff": "/Artisan/static/media/Graphik-Regular.510c03fcd932bb962bc5.woff",
     "index.html": "/Artisan/index.html",
     "main.30058f56.css.map": "/Artisan/static/css/main.30058f56.css.map",
-    "main.bcf36d08.js.map": "/Artisan/static/js/main.bcf36d08.js.map"
+    "main.d0675e4b.js.map": "/Artisan/static/js/main.d0675e4b.js.map"
   },
   "entrypoints": [
     "static/css/main.30058f56.css",
-    "static/js/main.bcf36d08.js"
+    "static/js/main.d0675e4b.js"
   ]
 }
