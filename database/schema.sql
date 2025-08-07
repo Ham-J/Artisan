@@ -1,5 +1,5 @@
-CREATE DATABASE trouve_ton_artisan;
-USE trouve_ton_artisan;
+/*CREATE DATABASE trouve_ton_artisan;
+USE trouve_ton_artisan;*/
 
 -- Table des catégories
 CREATE TABLE categories (
