@@ -1,6 +1,3 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
-
 const Artisan = sequelize.define("Artisan", {
   nom: {
     type: DataTypes.STRING,
@@ -31,9 +28,8 @@ const Artisan = sequelize.define("Artisan", {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
   }
-  },{
-    timestamps : false
-  }
-);
-
-module.exports = Artisan;
+}, {
+  timestamps: false,
+  tableName: "artisan",       
+  freezeTableName: true       
+});

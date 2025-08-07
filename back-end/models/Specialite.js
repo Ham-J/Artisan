@@ -6,8 +6,10 @@ const Specialite = sequelize.define("Specialite", {
     type: DataTypes.STRING,
     allowNull: false,
   }
-},{
-  timestamps: false
+}, {
+  timestamps: false,
+  tableName: "specialite",      
+  freezeTableName: true         
 });
 
 module.exports = Specialite;

@@ -7,7 +7,10 @@ const Categorie = sequelize.define("Categorie", {
     allowNull: false,
   },
 }, {
-  timestamps: false
+  timestamps: false,
+  tableName: "categorie",       
+  freezeTableName: true         
 });
 
 module.exports = Categorie;
+
