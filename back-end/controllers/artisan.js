@@ -13,10 +13,11 @@ exports.getAllArtisans = async (req, res) => {
 exports.getArtisansByCategorie = async (req, res) => {
   try {
     const { nom } = req.query;
+    console.log("Nom reçu depuis la requête :", nom); 
     const artisans = await artisanService.getArtisansByCategorie(nom);
     res.json(artisans);
   } catch (error) {
-    console.error("Erreur dans getArtisansByCategorie :", error);
+    console.error("Erreur dans getArtisansByCategorie :", error); 
     res.status(500).json({ message: "Erreur serveur" });
   }
 };

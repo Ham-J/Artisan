@@ -16,28 +16,17 @@ exports.getAllArtisans = async () => {
   }
 };
 
+
 exports.getArtisansByCategorie = async (nomCategorie) => {
-  try {
-    console.log("getArtisansByCategorie appelé avec nom :", nomCategorie);
-    return await Artisan.findAll({
+  return Artisan.findAll({
+    include: {
+      model: Specialite,
       include: {
-        model: Specialite,
-        required: true,
-        include: {
-          model: Categorie,
-          required: true,
-          where: {
-            nom: {
-              [Op.like]: `%${nomCategorie}%`,
-            },
-          },
-        },
-      },
-    });
-  } catch (error) {
-    console.error("Erreur dans getArtisansByCategorie :", error);
-    throw error;
-  }
+        model: Categorie,
+        where: { nom: nomCategorie }
+      }
+    }
+  });
 };
 
 exports.getTopArtisans = async () => {
