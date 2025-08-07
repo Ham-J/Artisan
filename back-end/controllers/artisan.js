@@ -11,7 +11,7 @@ exports.getAllArtisans = async (req, res) => {
   }
 };
 
-// GET artisans 
+// GET artisans par catégorie
 exports.getArtisansByCategorie = async (req, res) => {
   try {
     const { nom } = req.query;

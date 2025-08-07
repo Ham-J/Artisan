@@ -20,24 +20,17 @@ exports.getAllArtisans = async () => {
   }
 };
 
-// GET BY CATEGORIE
+// GET grâce à la catégorie
 exports.getArtisansByCategorie = async (nomCategorie) => {
-  try {
-    return await Artisan.findAll({
+  return Artisan.findAll({
+    include: {
+      model: Specialite,
       include: {
-        model: Specialite,
-        required: true,
-        include: {
-          model: Categorie,
-          where: { nom: nomCategorie },
-          required: true
-        }
+        model: Categorie,
+        where: { nom: nomCategorie } 
       }
-    });
-  } catch (error) {
-    console.error("Erreur dans getArtisansByCategorie :", error);
-    throw error;
-  }
+    }
+  });
 };
 
 // GET TOP 3
