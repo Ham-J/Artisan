@@ -1,66 +1,76 @@
 const artisanService = require("../services/artisan");
 
+// GET all artisans
 exports.getAllArtisans = async (req, res) => {
   try {
     const artisans = await artisanService.getAllArtisans();
-    res.json(artisans);
+    res.status(200).json(artisans);
   } catch (error) {
-    console.error("Erreur dans getAllArtisans :", error);
-    res.status(500).json({ message: "Erreur serveur" });
+    console.error(" Erreur dans getAllArtisans :", error.message);
+    res.status(500).json({ message: "Erreur serveur lors de la récupération des artisans" });
   }
 };
 
+// GET artisans by category name
 exports.getArtisansByCategorie = async (req, res) => {
+  const { nom } = req.query;
+
+  if (!nom) {
+    return res.status(400).json({ message: "Le paramètre 'nom' de la catégorie est requis" });
+  }
+
   try {
-    const { nom } = req.query;
-    console.log("Nom reçu depuis la requête :", nom); 
+    console.log("🔎 Nom reçu depuis la requête :", nom);
     const artisans = await artisanService.getArtisansByCategorie(nom);
-    res.json(artisans);
+    res.status(200).json(artisans);
   } catch (error) {
-    console.error("Erreur dans getArtisansByCategorie :", error); 
-    res.status(500).json({ message: "Erreur serveur" });
+    console.error(" Erreur dans getArtisansByCategorie :", error.message);
+    res.status(500).json({ message: "Erreur serveur lors de la récupération des artisans par catégorie" });
   }
 };
 
+// GET top artisans
 exports.getTopArtisans = async (req, res) => {
   try {
     const artisans = await artisanService.getTopArtisans();
-    res.json(artisans);
+    res.status(200).json(artisans);
   } catch (error) {
-    console.error("Erreur dans getTopArtisans :", error);
-    res.status(500).json({ message: "Erreur serveur" });
+    console.error(" Erreur dans getTopArtisans :", error.message);
+    res.status(500).json({ message: "Erreur serveur lors de la récupération des top artisans" });
   }
 };
 
+// SEARCH artisans by name
 exports.searchArtisans = async (req, res) => {
-  let { search } = req.query;
+  const { search } = req.query;
 
-  search = search?.trim();
-
-  if (!search) {
+  if (!search?.trim()) {
     return res.status(400).json({ message: "Le paramètre 'search' est requis" });
   }
 
   try {
-    const artisans = await artisanService.searchArtisansByName(search);
-    res.json(artisans);
+    const artisans = await artisanService.searchArtisansByName(search.trim());
+    res.status(200).json(artisans);
   } catch (error) {
-    console.error("Erreur dans searchArtisans :", error);
-    res.status(500).json({ message: "Erreur serveur" });
+    console.error(" Erreur dans searchArtisans :", error.message);
+    res.status(500).json({ message: "Erreur serveur lors de la recherche d'artisans" });
   }
 };
 
+// GET artisan by ID
 exports.getArtisanById = async (req, res) => {
+  const id = req.params.id;
+
   try {
-    const artisan = await artisanService.getArtisanById(req.params.id);
+    const artisan = await artisanService.getArtisanById(id);
 
     if (!artisan) {
       return res.status(404).json({ message: "Artisan non trouvé" });
     }
 
-    res.json(artisan);
+    res.status(200).json(artisan);
   } catch (error) {
-    console.error("Erreur dans getArtisanById :", error);
-    res.status(500).json({ message: "Erreur serveur" });
+    console.error(" Erreur dans getArtisanById :", error.message);
+    res.status(500).json({ message: "Erreur serveur lors de la récupération de l'artisan" });
   }
 };

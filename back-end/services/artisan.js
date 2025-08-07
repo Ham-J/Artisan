@@ -1,13 +1,17 @@
 const { Artisan, Specialite, Categorie } = require("../models");
 const { Op } = require("sequelize");
 
+// GET ALL
 exports.getAllArtisans = async () => {
   try {
-    console.log("getAllArtisans appelé");
     return await Artisan.findAll({
       include: {
         model: Specialite,
         attributes: ["nom"],
+        include: {
+          model: Categorie,
+          attributes: ["nom"],
+        },
       },
     });
   } catch (error) {
@@ -16,27 +20,38 @@ exports.getAllArtisans = async () => {
   }
 };
 
-
+// GET BY CATEGORIE
 exports.getArtisansByCategorie = async (nomCategorie) => {
-  return Artisan.findAll({
-    include: {
-      model: Specialite,
+  try {
+    return await Artisan.findAll({
       include: {
-        model: Categorie,
-        where: { nom: nomCategorie }
-      }
-    }
-  });
+        model: Specialite,
+        include: {
+          model: Categorie,
+          where: { nom: nomCategorie },
+          attributes: [],
+        },
+        attributes: ["nom"],
+      },
+    });
+  } catch (error) {
+    console.error("Erreur dans getArtisansByCategorie :", error);
+    throw error;
+  }
 };
 
+// GET TOP 3
 exports.getTopArtisans = async () => {
   try {
-    console.log("getTopArtisans appelé");
     return await Artisan.findAll({
       where: { top: true },
       include: {
         model: Specialite,
         attributes: ["nom"],
+        include: {
+          model: Categorie,
+          attributes: ["nom"],
+        },
       },
       limit: 3,
     });
@@ -46,9 +61,9 @@ exports.getTopArtisans = async () => {
   }
 };
 
+// SEARCH BY NAME
 exports.searchArtisansByName = async (search) => {
   try {
-    console.log("searchArtisansByName appelé avec :", search);
     return await Artisan.findAll({
       where: {
         nom: {
@@ -58,6 +73,10 @@ exports.searchArtisansByName = async (search) => {
       include: {
         model: Specialite,
         attributes: ["nom"],
+        include: {
+          model: Categorie,
+          attributes: ["nom"],
+        },
       },
     });
   } catch (error) {
@@ -66,13 +85,17 @@ exports.searchArtisansByName = async (search) => {
   }
 };
 
+// GET BY ID
 exports.getArtisanById = async (id) => {
   try {
-    console.log("getArtisanById appelé avec id :", id);
     return await Artisan.findByPk(id, {
       include: {
         model: Specialite,
         attributes: ["nom"],
+        include: {
+          model: Categorie,
+          attributes: ["nom"],
+        },
       },
     });
   } catch (error) {

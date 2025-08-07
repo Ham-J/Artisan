@@ -2,18 +2,23 @@ const { Categorie } = require("../models");
 
 exports.getAllCategories = async () => {
   try {
-    console.log("getAllCategories appelé");
+    console.log(" Service getAllCategories appelé");
 
     const categories = await Categorie.findAll({
       attributes: ["id", "nom"],
       order: [["nom", "ASC"]],
     });
 
-    console.log("Nombre de catégories récupérées :", categories.length);
+    if (!categories || categories.length === 0) {
+      console.warn(" Aucune catégorie trouvée dans la base de données.");
+      return [];
+    }
+
+    console.log(` ${categories.length} catégories récupérées`);
     return categories;
 
   } catch (error) {
-    console.error("Erreur dans getAllCategories :", error);
-    throw error;
+    console.error(" Erreur dans getAllCategories (service) :", error.message);
+    throw new Error("Impossible de récupérer les catégories");
   }
 };
