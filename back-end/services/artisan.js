@@ -1,5 +1,5 @@
 const { Artisan, Specialite, Categorie } = require("../models");
-const { Op } = require("sequelize");
+const { Op ,fn,col, where} = require("sequelize");
 
 // GET ALL
 exports.getAllArtisans = async () => {
@@ -28,11 +28,7 @@ exports.getArtisansByCategorie = async (nomCategorie) => {
         model: Specialite,
         include: {
           model: Categorie,
-          where: {
-            nom: {
-              [Op.iLike]: nomCategorie, 
-            },
-          },
+          where: where(fn("LOWER", col("nom")), nomCategorie.toLowerCase()),
         },
       },
     });
