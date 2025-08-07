@@ -8,7 +8,7 @@ const Categorie = sequelize.define("Categorie", {
   },
 }, {
   timestamps: false,
-  tableName: "categorie",       
+  tableName: "categories",       
   freezeTableName: true         
 });
 
