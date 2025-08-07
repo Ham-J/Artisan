@@ -12,7 +12,7 @@ const Specialite = sequelize.define("Specialite", {
   }
 }, {
   tableName: 'specialites', 
-  timestamps: true
+  timestamps: false
 });
 
 module.exports = Specialite;
